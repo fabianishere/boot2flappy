@@ -41,3 +41,6 @@ build/
 
 # Swap files
 *.swp
+
+# Don't ignore OVMF
+!deps/bios/bios.bin
