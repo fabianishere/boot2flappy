@@ -17,7 +17,7 @@ Create the build directory.
 $ mkdir build
 $ cd build
 ```
-boot2flappy requires CMake and a C cross-compiler (mingw-w64-x86-64) in order to run.
+boot2flappy requires CMake and a C cross-compiler (mingw-w64-x86-64) in order to build.
 On Ubuntu, please install the following packages:
 
 - binutils-mingw-w64 
@@ -35,7 +35,7 @@ $ make
 ## Playing
 After building the project, just run the following code in your command prompt:
 ```sh
-vm/start.sh
+$ vm/start.sh
 ```
 This will start a Qemu virtual machine in which you can play the game.
 
