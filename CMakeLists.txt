@@ -43,7 +43,7 @@ include_directories(include/ ${EFI_INC})
 add_library(gnu-efi ${EFI_SOURCES})
 add_library(efi-x86_64 src/efi-x86_64/core.s src/efi-x86_64/console.s src/efi-x86_64/graphics.s src/efi-x86_64/image.s src/efi-x86_64/fs.s src/efi-x86_64/event.s)
 target_link_libraries(efi-x86_64 gnu-efi)
-add_executable(game src/game/main.c src/game/main.s src/game/sprites.s)
+add_executable(game src/game/main.s src/game/sprites.s)
 target_link_libraries(game efi-x86_64)
 add_custom_command(TARGET game
 	POST_BUILD
@@ -51,6 +51,7 @@ add_custom_command(TARGET game
 	COMMAND ${CMAKE_COMMAND} -E make_directory ${PROJECT_BINARY_DIR}/vm/hda-contents   
 	COMMAND ${CMAKE_COMMAND} -E copy ${PROJECT_BINARY_DIR}/bin/game.exe ${PROJECT_BINARY_DIR}/vm/hda-contents/EFI/BOOT/BOOTX64.EFI
 	COMMAND ${CMAKE_COMMAND} -E copy ${CMAKE_SOURCE_DIR}/deps/bios/bios.bin ${PROJECT_BINARY_DIR}/vm
+	COMMAND ${CMAKE_COMMAND} -E copy ${CMAKE_SOURCE_DIR}/resources/sprites.bmp ${PROJECT_BINARY_DIR}/vm/hda-contents/EFI/BOOT/SPRITES.BMP
 	COMMAND ${CMAKE_COMMAND} -E copy ${CMAKE_SOURCE_DIR}/tools/qemu/start.sh ${PROJECT_BINARY_DIR}/vm
 	COMMENT "Run 'vm/start.sh' to start the virtual machine."
 )
