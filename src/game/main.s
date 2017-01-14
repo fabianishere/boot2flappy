@@ -423,13 +423,13 @@ efi_main:
         
         mov     $0, %r13                # the last pipe counter
         mov     $0, %r14                # the middle pipe counter
-        movw    $270, -230(%rbp)        # the height of the downwards pipe
+        movw    $234, -230(%rbp)        # the height of the downwards pipe
         movw    $1430, -232(%rbp)       # the x-offset of the pipe
-        movw    $230, -234(%rbp)        # the height of the downwards pipe
-        movw    $1200, -236(%rbp)       # the x-offset of the pipe
+        movw    $270, -234(%rbp)        # the height of the downwards pipe
+        movw    $1279, -236(%rbp)       # the x-offset of the pipe
         movw    $230, -238(%rbp)        # the height of the downwards pipe
         movw    $1092, -240(%rbp)       # the x-offset of the pipe
-        movw    $250, -242(%rbp)        # the height of the downwards pipe
+        movw    $247, -242(%rbp)        # the height of the downwards pipe
         movw    $852, -244(%rbp)        # the x-offset of the pipe
 .game_loop:
         add     %rdi, %rsi              # v(n) = v(n - 1) + a(n)
@@ -656,11 +656,11 @@ efi_main:
         xor     %r9, %r9                # clear %r9
         mov     2(%rax), %r9w           # get the height of the downward pipe
         mov     %rbx, %rax              # copy %rbx to %rax
-        #sub     $16, %rax               # subtract half the height of the bird to %rax.
+        #sub     $16, %rax              # subtract half the height of the bird to %rax.
         cmp     %r9, %rax               # the bird should be lower than the pipe y-bound
         jle     .die                    # die if the bird touches the pipe
         add     $80, %r9                # an offset of 80 pixels
-        #add     $32, %rax               # add the height of the bird to %rax
+        #add     $32, %rax              # add the height of the bird to %rax
         cmp     %r9, %rax               # the bird should be higher then the lower pipe upper y-bound
         jge     .die                    # die if the bird touches the pipe
         
