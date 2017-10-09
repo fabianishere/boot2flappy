@@ -59,19 +59,17 @@ add_custom_command(TARGET game
 add_custom_target(img DEPENDS game)
 add_custom_command(TARGET img
 	COMMAND dd if=/dev/zero of=${PROJECT_BINARY_DIR}/bin/game.img bs=1k count=1440
-	COMMAND mformat -i ${PROJECT_BINARY_DIR}/bin/efi.img -f 1440 ::
-	COMMAND mmd -i ${PROJECT_BINARY_DIR}/bin/efi.img ::/EFI
-	COMMAND mmd -i ${PROJECT_BINARY_DIR}/bin/efi.img ::/EFI/BOOT
-	COMMAND mcopy -i ${PROJECT_BINARY_DIR}/bin/efi.img ${PROJECT_BINARY_DIR}/bin/game.exe ::/EFI/BOOT/BOOTX64.EFI
-    COMMAND mcopy -i ${PROJECT_BINARY_DIR}/bin/efi.img ${PROJECT_SOURCE_DIR}/resources/sprites.bmp ::/EFI/BOOT/SPRITES.BMP
+	COMMAND mformat -i ${PROJECT_BINARY_DIR}/bin/game.img -f 1440 ::
+	COMMAND mmd -i ${PROJECT_BINARY_DIR}/bin/game.img ::/EFI
+	COMMAND mmd -i ${PROJECT_BINARY_DIR}/bin/game.img ::/EFI/BOOT
+	COMMAND mcopy -i ${PROJECT_BINARY_DIR}/bin/game.img ${PROJECT_BINARY_DIR}/bin/game.exe ::/EFI/BOOT/BOOTX64.EFI
+    COMMAND mcopy -i ${PROJECT_BINARY_DIR}/bin/game.img ${PROJECT_SOURCE_DIR}/resources/sprites.bmp ::/EFI/BOOT/SPRITES.BMP
 	COMMENT "Creating image file for EFI executable"
 )
 
 add_custom_target(qemu DEPENDS game)
 add_custom_command(TARGET qemu
-	COMMAND qemu-system-x86_64 -bios ${PROJECT_BINARY_DIR}/vm/bios.bin -hda fat:${PROJECT_BINARY_DIR}/vm/hda-contents
+	COMMAND qemu-system-x86_64 -bios ${PROJECT_BINARY_DIR}/vm/bios.bin -drive format=raw,file=fat:rw:${PROJECT_BINARY_DIR}/vm/hda-contents
 	COMMENT "Running EFI executable in qemu"
 )
-                
-
 
