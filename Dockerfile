@@ -1,5 +1,6 @@
 # Pull base image.
 FROM ubuntu:latest
+MAINTAINER Fabian Mastenbroek <mail.fabianm@gmail.com>
 
 # Install.
 RUN \
@@ -8,15 +9,21 @@ RUN \
   apt-get -y upgrade && \
   apt-get install -y build-essential && \
   apt-get install -y software-properties-common && \
-  apt-get install -y gdb nasm byobu curl git htop man unzip vim wget cmake binutils-mingw-w64 gcc-mingw-w64-x86-64 xorriso mtools valgrind && \
+  apt-get install -y gdb cmake && \
+  apt-get install -y binutils-mingw-w64 gcc-mingw-w64-x86-64 && \
+  apt-get install -y dosfstools mtools && \
+  apt-get install -y curl git man unzip xorriso && \
   locale-gen "en_US.UTF-8" && update-locale LANG=en_US.UTF-8 && \
   rm -rf /var/lib/apt/lists/*
 
 # Set environment variables.
-ENV HOME /root
+ENV HOME=/root
+ENV APP_HOME=$HOME/boot2flappy
+# Create source volue
+VOLUME $APP_HOME
 
 # Define working directory.
-WORKDIR /root
+WORKDIR $APP_HOME
 
 # Define default command.
-CMD ["/bin/sh", "-c", "mkdir build && cd build && cmake .. && make img"]
+CMD ["/bin/sh", "-c", "mkdir -p build && cd build && cmake .. && make img"]

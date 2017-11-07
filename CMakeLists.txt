@@ -58,12 +58,12 @@ add_custom_command(TARGET game
 
 add_custom_target(img DEPENDS game)
 add_custom_command(TARGET img
-	COMMAND dd if=/dev/zero of=${PROJECT_BINARY_DIR}/bin/game.img bs=1k count=1440
-	COMMAND mformat -i ${PROJECT_BINARY_DIR}/bin/game.img -f 1440 ::
-	COMMAND mmd -i ${PROJECT_BINARY_DIR}/bin/game.img ::/EFI
-	COMMAND mmd -i ${PROJECT_BINARY_DIR}/bin/game.img ::/EFI/BOOT
-	COMMAND mcopy -i ${PROJECT_BINARY_DIR}/bin/game.img ${PROJECT_BINARY_DIR}/bin/game.exe ::/EFI/BOOT/BOOTX64.EFI
-    COMMAND mcopy -i ${PROJECT_BINARY_DIR}/bin/game.img ${PROJECT_SOURCE_DIR}/resources/sprites.bmp ::/EFI/BOOT/SPRITES.BMP
+	COMMAND dd if=/dev/zero of=${PROJECT_BINARY_DIR}/bin/game.iso bs=1M count=16
+	COMMAND mkfs.vfat ${PROJECT_BINARY_DIR}/bin/game.iso -F 16 -n BOOT2FLAPPY
+	COMMAND mmd -i ${PROJECT_BINARY_DIR}/bin/game.iso ::/EFI
+	COMMAND mmd -i ${PROJECT_BINARY_DIR}/bin/game.iso ::/EFI/BOOT
+	COMMAND mcopy -i ${PROJECT_BINARY_DIR}/bin/game.iso ${PROJECT_BINARY_DIR}/bin/game.exe ::/EFI/BOOT/BOOTX64.EFI
+    COMMAND mcopy -i ${PROJECT_BINARY_DIR}/bin/game.iso ${PROJECT_SOURCE_DIR}/resources/sprites.bmp ::/EFI/BOOT/SPRITES.BMP
 	COMMENT "Creating image file for EFI executable"
 )
 
