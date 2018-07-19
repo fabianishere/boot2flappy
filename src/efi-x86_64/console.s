@@ -29,9 +29,9 @@
 
 # Routines for printing to the EFI console
 .bss
-STDOUT: .quad   0xCAFEBABE              # pointer to ST->ConOut
-STDERR: .quad   0xCAFEBABE              # pointer to ST->StdErr
-STDIN:  .quad   0xCAFEBABE              # pointer to ST->ConIn
+STDOUT: .space 8                        # will point to ST->ConOut
+STDERR: .space 8                        # will point to ST->StdErr
+STDIN:  .space 8                        # will point to ST->ConIn
 .text
 OK:     .asciz  "  OK  "
 FAIL:   .asciz  " FAIL "

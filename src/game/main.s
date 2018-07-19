@@ -56,7 +56,7 @@
 # x86-64 assembly (AT&T syntax).
 # Please note that Microsoft x64 calling conventions are used in this application.
 .text
-msg_welcome:            .asciz  "Welcome to %EFlappy Alexandru%N!\n"
+msg_welcome:            .asciz  "Welcome to %EFlappy Bird%N!\n"
 msg_init_lib:           .asciz  "Initialize EFI library\n"
 msg_init_console:       .asciz  "Initialize EFI console\n"
 msg_init_gop:           .asciz  "Locate EFI Graphics Output Protocol\n"
@@ -70,8 +70,6 @@ msg_err:                .asciz  "%r (%d)\n"
 
 # Path to the sprite as a 16 bit character array
 sprite_path:            .ascii "\\\0E\0F\0I\0\\\0B\0O\0O\0T\0\\\0S\0P\0R\0I\0T\0E\0S\0.\0B\0M\0P\0\0\0"
-
-test:   .string "%d %d\n"
 
 # The main entry point of the EFI application.
 #

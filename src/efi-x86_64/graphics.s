@@ -30,12 +30,12 @@
 
 # Routines for accessing and modifying the frambuffer given by EFI.
 .bss
-GOP:                    .quad   0xCAFEBABE      # pointer to EFI Graphics Output Protocol (GOP)
-GOP_MODE:               .quad   0xCAFEBABE      # pointer to GOP->Mode
-GOP_FRAMEBUFFER:        .quad   0xCAFEBABE      # pointer to the EFI GOP framebuffer
-GOP_FRAMEBUFFER_SIZE:   .quad   0               # the size of the framebuffer
-GOP_WIDTH:              .long   -1              # the width of the display
-GOP_HEIGHT:             .long   -1              # the height of the display
+GOP:                    .space 8          # pointer to EFI Graphics Output Protocol (GOP)
+GOP_MODE:               .space 8          # pointer to GOP->Mode
+GOP_FRAMEBUFFER:        .space 8          # pointer to the EFI GOP framebuffer
+GOP_FRAMEBUFFER_SIZE:   .space 8          # the size of the framebuffer
+GOP_WIDTH:              .space 4          # the width of the display
+GOP_HEIGHT:             .space 4          # the height of the display
 
 .text
 # The GUID for the EFI Graphics Ouput Protocol (GOP) which consists of a 32 bit
