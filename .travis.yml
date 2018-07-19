@@ -1,0 +1,10 @@
+language: c
+addons:
+  apt:
+    packages:
+    - binutils-mingw-w64
+    - gcc-mingw-w64-x86-64
+script:
+    - mkdir build
+    - cd build
+    - cmake .. && make VERBOSE=1

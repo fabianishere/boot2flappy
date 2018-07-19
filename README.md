@@ -1,4 +1,6 @@
-# boot2flappy
+boot2flappy
+[![Build Status](https://travis-ci.org/fabianishere/boot2flappy.svg?branch=master)](https://travis-ci.org/fabianishere/boot2flappy)
+===========
 Flappy Bird for UEFI written in x86 Assembly.
 
 ![Screenshot](resources/screenshot.png)
