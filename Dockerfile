@@ -7,12 +7,11 @@ RUN \
   sed -i 's/# \(.*multiverse$\)/\1/g' /etc/apt/sources.list && \
   apt-get update && \
   apt-get -y upgrade && \
-  apt-get install -y build-essential && \
+  apt-get install -y build-essential locales && \
   apt-get install -y software-properties-common && \
   apt-get install -y gdb cmake && \
   apt-get install -y binutils-mingw-w64 gcc-mingw-w64-x86-64 && \
-  apt-get install -y dosfstools mtools && \
-  apt-get install -y curl git man unzip xorriso && \
+  apt-get install -y dosfstools mtools xorriso && \
   locale-gen "en_US.UTF-8" && update-locale LANG=en_US.UTF-8 && \
   rm -rf /var/lib/apt/lists/*
 
