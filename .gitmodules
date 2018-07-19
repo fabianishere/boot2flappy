@@ -1,0 +1,3 @@
+[submodule "deps/gnu-efi"]
+	path = deps/gnu-efi
+	url = https://github.com/vathpela/gnu-efi

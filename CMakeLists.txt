@@ -34,8 +34,8 @@ set(EFI_LDS ${EFI_PATH}/gnuefi/elf_${ARCH}_efi.lds)
 set(EFI_SOURCES ${EFI_PATH}/lib/init.c ${EFI_PATH}/lib/data.c ${EFI_PATH}/lib/str.c ${EFI_PATH}/lib/sread.c ${EFI_PATH}/lib/print.c ${EFI_PATH}/lib/misc.c ${EFI_PATH}/lib/error.c ${EFI_PATH}/lib/hand.c ${EFI_PATH}/lib/x86_64/math.c ${EFI_PATH}/lib/x86_64/initplat.c ${EFI_PATH}/lib/guid.c ${EFI_PATH}/lib/runtime/efirtlib.c  ${EFI_PATH}/lib/console.c  ${EFI_PATH}/lib/event.c  ${EFI_PATH}/lib/runtime/rtdata.c ${EFI_PATH}/lib/runtime/rtstr.c ${EFI_PATH}/lib/runtime/efirtlib.c ${EFI_PATH}/lib/dpath.c)
 
 # Compiler definitions
-set(CMAKE_C_FLAGS "-DGNU_EFI_USE_MS_ABI -m64 -ffreestanding -fno-stack-protector -fpic -fshort-wchar -mno-red-zone -O3")
-set(CMAKE_EXE_LINKER_FLAGS "-nostdlib -Wl,-dll -shared -Wl,--subsystem,10 -e efi_main -lgcc -Wl,-Bsymbolic")
+set(CMAKE_C_FLAGS "-DGNU_EFI_USE_MS_ABI -m64 -ffreestanding  -Wall -Werror")
+set(CMAKE_EXE_LINKER_FLAGS "-nostdlib -Wl,-dll -shared -Wl,--subsystem,10 -Wl,-eefi_main -lgcc -Wl,-Bsymbolic -Wl,-nostdlib")
 
 # Include headers
 include_directories(include/ ${EFI_INC})
