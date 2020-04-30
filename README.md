@@ -8,7 +8,7 @@ Flappy Bird for UEFI written in x86 Assembly.
 ## Getting the source
 Download the source code by running the following code in your command prompt:
 ```sh
-$ git clone https://github.com/fabianishere/boot2flappy.git
+$ git clone https://github.com/fabianishere/boot2flappy.git --recursive
 ```
 or simply [grab](https://github.com/fabianishere/boot2flappy/archive/master.zip) 
 a copy of the source code as a Zip file.
@@ -17,6 +17,12 @@ a copy of the source code as a Zip file.
 We provide two ways for building the project: manually on your local system or
 in a container using Docker. If installing the required dependencies is not
 trivial or unwanted, we suggest building the project with [Docker](#docker).
+
+Make sure you have also downloaded the `deps/gnu-efi` submodule, which may be
+done via:
+```shell
+$ git submodule update --init
+```
 
 ### Manual
 Create the build directory.
