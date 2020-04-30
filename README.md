@@ -53,7 +53,13 @@ follows. Make sure you run the command in the project root directory.
 $ docker run --rm -it -v `pwd`:/root/boot2flappy fabianishere/boot2flappy
 ```
 
-This will build the project in the `build/` directory.
+This will build the project in the `build/` directory. Since Docker runs as 
+root user, you need to fix the permissions of the build directory in order
+to run the game:
+
+```shell
+$ sudo chown -R $USER:$USER build/
+```
 
 ## Playing
 
